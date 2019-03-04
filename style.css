@@ -6,10 +6,10 @@ body {
 }
 
 #background {
-  max-height: 200vh;
-  max-width: 200vw;
-  min-height: 200vh;
-  min-width: 200vw;
+  max-height: 150vh;
+  max-width: 150vw;
+  min-height: 150vh;
+  min-width: 150vw;
   position: absolute;
   top: 50%;
   left: 50%;
