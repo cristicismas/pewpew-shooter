@@ -1,0 +1,29 @@
+body {
+  background-color: #111;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#background {
+  max-height: 200vh;
+  max-width: 200vw;
+  min-height: 200vh;
+  min-width: 200vw;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 0;
+  animation: spin 250s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
