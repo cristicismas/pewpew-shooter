@@ -1,5 +1,6 @@
 import { moveShip } from './spacecraft.js';
 import { renderBackground } from './background.js';
+import { handleStartGame } from './game.js';
 
 $(document).ready(() => {
   // Play background music.
@@ -12,12 +13,7 @@ $(document).ready(() => {
 
   renderBackground(canvas, ctx);
 
-  $('#start-btn').click(() => {
-    $('#welcome-message').hide();
-    $('#start-btn').hide();
-  });
+  handleStartGame();
 
-  setInterval(function() {
-    moveShip(canvas);
-  }, 20);
+  moveShip(canvas);
 });

@@ -12,6 +12,7 @@ $(document).keyup(function(e) {
 });
 
 export function moveShip(canvas) {
+  setInterval(function() {
   const { left, top } = $('#space-craft').offset();
 
   for (var key in keysPressed) {
@@ -31,4 +32,5 @@ export function moveShip(canvas) {
       $('#space-craft').animate({ top: '+=10' }, 0);
     }
   }
+  }, 20);
 }
