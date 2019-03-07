@@ -1,6 +1,17 @@
 import { KEYS } from './constants.js';
 
-export function moveShip(canvas, keysPressed) {
+// Handle ship movement
+var keysPressed = {};
+
+$(document).keydown(function(e) {
+  keysPressed[e.keyCode] = true;
+});
+
+$(document).keyup(function(e) {
+  delete keysPressed[e.keyCode];
+});
+
+export function moveShip(canvas) {
   const { left, top } = $('#space-craft').offset();
 
   for (var key in keysPressed) {

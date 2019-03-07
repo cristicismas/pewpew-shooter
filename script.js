@@ -25,23 +25,12 @@ $(document).ready(() => {
   // Render ship.
   $('#space-craft').prepend('<img src="./assets/spacecraft/spaceCraft1_N.png" />');
 
-  // Handle ship movement
-  var keysPressed = {};
-
-  $(document).keydown(function(e) {
-    keysPressed[e.keyCode] = true;
-  });
-
-  $(document).keyup(function(e) {
-    delete keysPressed[e.keyCode];
-  });
-
   $('#start-btn').click(() => {
     $('#welcome-message').hide();
     $('#start-btn').hide();
   });
 
   setInterval(function() {
-    moveShip(canvas, keysPressed);
+    moveShip(canvas);
   }, 20);
 });
