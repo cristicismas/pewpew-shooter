@@ -1,6 +1,14 @@
 const MAX_STARS = 250;
 
-function renderBackground(canvas, ctx) {
+function renderBackground() {
+  // Play background music.
+  const bgMusic = document.getElementById('background-music');
+  bgMusic.play();
+
+  // Render background
+  const canvas = document.getElementById('background');
+  const ctx = canvas.getContext('2d');
+
   canvas.width = $(document).width();
   canvas.height = $(document).height();
 
