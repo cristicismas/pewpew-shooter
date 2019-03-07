@@ -1,5 +1,5 @@
 import { moveShip } from './spacecraft.js';
-import { generateStars, populateBackground } from './background.js';
+import { renderBackground } from './background.js';
 
 
 $(document).ready(() => {
@@ -11,16 +11,7 @@ $(document).ready(() => {
   const canvas = document.getElementById('background');
   const ctx = canvas.getContext('2d');
 
-  canvas.width = $(document).width();
-  canvas.height = $(document).height();
-
-  const stars = generateStars(canvas);
-
-  $(window).on('resize', () => {
-    populateBackground(ctx, stars);
-  });
-
-  populateBackground(ctx, stars);
+  renderBackground(canvas, ctx)
 
   // Render ship.
   $('#space-craft').prepend('<img src="./assets/spacecraft/spaceCraft1_N.png" />');

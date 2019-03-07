@@ -1,5 +1,21 @@
 const MAX_STARS = 250;
 
+function renderBackground(canvas, ctx) {
+  canvas.width = $(document).width();
+  canvas.height = $(document).height();
+
+  let stars = generateStars(canvas);
+  populateBackground(ctx, stars);
+
+  $(window).on('resize', () => {
+    canvas.width = $(document).width();
+    canvas.height = $(document).height();
+    
+    stars = generateStars(canvas);
+    populateBackground(ctx, stars);
+  });
+}
+
 function generateStars(canvas) {
   const stars = [];
 
@@ -33,4 +49,4 @@ function getRandomNumber(max) {
   return Math.floor(Math.random() * Math.floor(max));
 }
 
-export { generateStars, populateBackground };
+export { renderBackground };
