@@ -6,5 +6,11 @@ export const KEYS = {
   upKey: 38,
   leftKey: 37,
   downKey: 40,
-  rightKey: 39
+  rightKey: 39,
+  space: 32
+};
+
+export const SHIP = {
+  WIDTH: 120,
+  HEIGHT: 81.5
 };
