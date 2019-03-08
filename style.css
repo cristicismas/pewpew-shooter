@@ -5,11 +5,14 @@ body {
   overflow: hidden;
 }
 
-#background {
+canvas {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: -1;
+}
+
+#background {
+  z-index: -2;
 }
 
 #welcome-message {

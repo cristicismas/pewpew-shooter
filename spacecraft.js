@@ -1,6 +1,5 @@
 import { KEYS } from './constants.js';
 
-// Handle ship movement
 var keysPressed = {};
 
 $(document).keydown(function(e) {
@@ -11,7 +10,9 @@ $(document).keyup(function(e) {
   delete keysPressed[e.keyCode];
 });
 
-export function moveShip(canvas) {
+const background = document.getElementById('background');
+
+export function moveShip() {
   setInterval(function() {
     const { left, top } = $('#space-craft').offset();
 
@@ -25,10 +26,10 @@ export function moveShip(canvas) {
       if (key == KEYS.upKey || key == KEYS.W && top >= 0) {
         $('#space-craft').animate({ top: '-=10' }, 0);
       }
-      if (key == KEYS.rightKey || key == KEYS.D && left < canvas.width - 90) {
+      if (key == KEYS.rightKey || key == KEYS.D && left < background.width - 90) {
         $('#space-craft').animate({ left: '+=10' }, 0);
       }
-      if (key == KEYS.downKey || key == KEYS.S && top < canvas.height - 100) {
+      if (key == KEYS.downKey || key == KEYS.S && top < background.height - 100) {
         $('#space-craft').animate({ top: '+=10' }, 0);
       }
     }
