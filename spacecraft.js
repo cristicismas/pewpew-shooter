@@ -10,16 +10,22 @@ $(document).keyup(function(e) {
   delete keysPressed[e.keyCode];
 });
 
-const objectsLayer = document.getElementById('game-objects');
-const ctx = objectsLayer.getContext('2d');
+const { objectsLayer, ctx } = handleCanvas();
 
-objectsLayer.width = $(document).width();
-objectsLayer.height = $(document).height();
+function handleCanvas() {
+  const objectsLayer = document.getElementById('game-objects');
+  const ctx = objectsLayer.getContext('2d');
 
-$(window).on('resize', () => {
   objectsLayer.width = $(document).width();
   objectsLayer.height = $(document).height();
-});
+
+  $(window).on('resize', () => {
+    objectsLayer.width = $(document).width();
+    objectsLayer.height = $(document).height();
+  });
+
+  return { objectsLayer, ctx };
+}
 
 export function handleMovement() {
   setInterval(function() {
