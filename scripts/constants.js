@@ -16,7 +16,7 @@ export const SHIP = {
   // Milliseconds, lower is faster.
   MOVE_DELAY: 20,
   LASER_DRAWING_DELAY: 15,
-  SHOOTING_DELAY: 100,
+  SHOOTING_DELAY: 300,
 };
 
 export const ENEMY = {
