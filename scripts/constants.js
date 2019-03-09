@@ -18,3 +18,24 @@ export const SHIP = {
   LASER_DRAWING_DELAY: 15,
   SHOOTING_DELAY: 100,
 };
+
+export const ENEMY = {
+  E1: {
+    WIDTH: 35,
+    HEIGHT: 50,
+    MOVE_DELAY: 20,
+    SPEED: 3
+  },
+  E2: {
+    WIDTH: 80,
+    HEIGHT: 60,
+    MOVE_DELAY: 25,
+    SPEED: 3
+  },
+  E3: {
+    WIDTH: 100,
+    HEIGHT: 80,
+    MOVE_DELAY: 30,
+    SPEED: 3
+  }
+}

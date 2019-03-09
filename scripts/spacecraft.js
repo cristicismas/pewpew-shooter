@@ -3,7 +3,7 @@ import { KEYS, SHIP } from './constants.js';
 var keysPressed = {};
 var ship;
 
-const shipPosition = {
+export const shipPosition = {
   left: $(document).width() / 2 - SHIP.WIDTH / 2,
   top: $(document).height() - 200
 };
