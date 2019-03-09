@@ -60,7 +60,7 @@ export function handleShooting() {
         offsetTop -= 10;
       }
     }
-  }, 20);
+  }, SHIP.SHOOTING_DELAY);
 }
 
 function drawLaser(x, y) {
@@ -85,5 +85,5 @@ function drawLaser(x, y) {
     ctx.fill();
 
     topOffset -= 10;
-  }, 30);
+  }, SHIP.LASER_DRAWING_DELAY);
 }
