@@ -114,14 +114,11 @@ function drawLaser(x, y) {
 
   setInterval(function() {
     ctx.beginPath();
+    
     const lastTopOffset = topOffset + 10;
 
-    // Without these it doesnt have enough y or x offset.
-    const leftOffsetToClear = leftOffset - 2;
-    const topOffsetToClear = lastTopOffset + 5;
-
     // Clear last laser position.
-    ctx.clearRect(leftOffsetToClear, topOffsetToClear, 10, 20);
+    ctx.clearRect(leftOffset, lastTopOffset, 3, 20);
     
     // Clear all off-screen lasers.
     ctx.clearRect(0, objectsLayer.width, objectsLayer.width, 20);
