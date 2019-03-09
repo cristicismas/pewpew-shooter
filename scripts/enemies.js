@@ -19,7 +19,7 @@ export function createEnemy() {
   const ctx = objectsLayer.getContext('2d');
 
   enemy = new Image();
-  enemy.src = './assets/enemies/enemy-1.png';
+  enemy.src = E1.URL;
   enemy.onload = function() {
     ctx.beginPath();
     ctx.drawImage(enemy, enemyPosition.left, enemyPosition.top, E1.WIDTH, E1.HEIGHT);
