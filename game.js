@@ -1,6 +1,6 @@
 export function handleStartGame() {
   $('#start-btn').click(() => {
-    $('#welcome-message').hide();
-    $('#start-btn').hide();
+    $('#welcome-message').fadeOut('slow');
+    $('#start-btn').fadeOut('slow');
   });
 }
