@@ -60,22 +60,22 @@ export function handleMovement() {
       if (!keysPressed.hasOwnProperty(key)) continue;
       if (!document.hasFocus()) continue;
 
-      if (key == KEYS.leftKey || key == KEYS.A && left >= -40) {
+      if (key == KEYS.LEFT || key == KEYS.A && left >= -40) {
         clearShip();
         shipPosition.left -= 10;
         moveShip(ctx);
       }
-      if (key == KEYS.upKey || key == KEYS.W && top >= 0) {
+      if (key == KEYS.UP || key == KEYS.W && top >= 0) {
         clearShip();
         shipPosition.top -= 10;
         moveShip(ctx);
       }
-      if (key == KEYS.rightKey || key == KEYS.D && left < objectsLayer.width - 90) {
+      if (key == KEYS.RIGHT || key == KEYS.D && left < objectsLayer.width - 90) {
         clearShip();
         shipPosition.left += 10;
         moveShip(ctx);
       }
-      if (key == KEYS.downKey || key == KEYS.S && top < objectsLayer.height - 100) {
+      if (key == KEYS.DOWN || key == KEYS.S && top < objectsLayer.height - 100) {
         clearShip();
         shipPosition.top += 10;
         moveShip(ctx);
@@ -97,7 +97,7 @@ export function handleShooting() {
       if (!keysPressed.hasOwnProperty(key)) continue;
       if (!document.hasFocus()) continue;
       
-      if (key == KEYS.space) {
+      if (key == KEYS.SPACE) {
         const verticalMiddle = SHIP.WIDTH / 2 - 2;
         const offsetLeft = left + verticalMiddle;
         let offsetTop = top;

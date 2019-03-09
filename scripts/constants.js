@@ -3,11 +3,11 @@ export const KEYS = {
   A: 65,
   S: 83,
   D: 68,
-  upKey: 38,
-  leftKey: 37,
-  downKey: 40,
-  rightKey: 39,
-  space: 32
+  UP: 38,
+  LEFT: 37,
+  DOWN: 40,
+  RIGHT: 39,
+  SPACE: 32
 };
 
 export const SHIP = {
