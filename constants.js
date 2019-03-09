@@ -11,8 +11,8 @@ export const KEYS = {
 };
 
 export const SHIP = {
-  WIDTH: 120,
-  HEIGHT: 81.5,
+  WIDTH: 127,
+  HEIGHT: 82,
   // Milliseconds, lower is faster.
   MOVE_DELAY: 20,
   LASER_DRAWING_DELAY: 15,
