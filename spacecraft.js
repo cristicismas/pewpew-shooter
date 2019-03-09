@@ -42,7 +42,7 @@ export function handleMovement() {
         $('#space-craft').animate({ top: '+=10' }, 0);
       }
     }
-  }, 20);
+  }, SHIP.MOVE_DELAY);
 }
 
 export function handleShooting() {
