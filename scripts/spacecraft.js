@@ -1,4 +1,5 @@
-import { KEYS, SHIP } from './constants.js';
+import { KEYS, SHIP, ENEMY } from './constants.js';
+import { enemyPosition, killEnemy } from './enemies.js';
 
 var keysPressed = {};
 var ship;
@@ -111,25 +112,47 @@ export function handleShooting() {
 function drawLaser(x, y) {
   const leftOffset = x;
   let topOffset = y;
+  
+  let laserAlive = true;
 
   setInterval(function() {
-    ctx.beginPath();
-    
-    const lastTopOffset = topOffset + 10;
+    const enemyHit = 
+      topOffset >= enemyPosition.top &&
+      topOffset <= enemyPosition.top + ENEMY.E1.HEIGHT &&
+      leftOffset >= enemyPosition.left && 
+      leftOffset <= enemyPosition.left + ENEMY.E1.WIDTH;
 
-    // Clear last laser position.
-    ctx.clearRect(leftOffset, lastTopOffset, 3, 20);
-    
-    // Clear all off-screen lasers.
-    ctx.clearRect(0, objectsLayer.width, objectsLayer.width, 20);
-    
-    ctx.fillStyle = '#f5f5f5';
-    ctx.rect(leftOffset, topOffset, 3, 20);
-    ctx.fill();
+    if (enemyHit) {
+      ctx.beginPath();
+      
+      // Kill enemy
+      killEnemy();
 
-    // Render ship again (because clearing laser also clears part of the ship)
-    moveShip(ctx);
-
-    topOffset -= 10;
+      // Clear laser
+      ctx.clearRect(leftOffset, topOffset + 10, 3, 20);
+      laserAlive = false;
+    } else if (laserAlive) {
+      ctx.beginPath();
+    
+      const lastTopOffset = topOffset + 10;
+  
+      // Clear last laser position.
+      ctx.clearRect(leftOffset, lastTopOffset, 3, 20);
+      
+      // Clear all off-screen lasers.
+      if (topOffset < -80) {
+        ctx.clearRect(0, -100, objectsLayer.width, 30);
+        laserAlive = false;
+      }
+      
+      ctx.fillStyle = '#f5f5f5';
+      ctx.rect(leftOffset, topOffset, 3, 20);
+      ctx.fill();
+  
+      // Render ship again (because clearing laser also clears part of the ship)
+      moveShip(ctx);
+  
+      topOffset -= 10;
+    }
   }, SHIP.LASER_DRAWING_DELAY);
 }

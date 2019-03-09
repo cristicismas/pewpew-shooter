@@ -5,10 +5,12 @@ const { E1, E2, E3 } = ENEMY;
 
 var enemy;
 
-const enemyPosition = {
+export const enemyPosition = {
   left: $(document).width() / 2 - E1.WIDTH / 2,
   top: 50
 };
+
+let isEnemyAlive = true;
 
 const { objectsLayer, ctx } = createEnemy();
 
@@ -30,20 +32,25 @@ export function createEnemy() {
 
 function handleEnemyMovement() {
   setInterval(function() {
-    const enemyX = enemyPosition.left;
-    const shipX = shipPosition.left;
+    if (isEnemyAlive) {
+      
+      const enemyX = enemyPosition.left;
+      const shipX = shipPosition.left;
 
-    const shipIsLeft = enemyX > shipX + SHIP.WIDTH;
-    const shipIsRight = shipX > enemyX;
+      const shipIsLeft = enemyX > shipX + SHIP.WIDTH;
+      const shipIsRight = shipX > enemyX;
 
-    if (shipIsLeft) {
+      if (shipIsLeft) {
+        clearEnemy();
+        enemyPosition.left -= E1.SPEED;
+        moveEnemy();
+      } else if (shipIsRight) {
+        clearEnemy();
+        enemyPosition.left += E1.SPEED;
+        moveEnemy();
+      }
+    } else {
       clearEnemy();
-      enemyPosition.left -= E1.SPEED;
-      moveEnemy();
-    } else if (shipIsRight) {
-      clearEnemy();
-      enemyPosition.left += E1.SPEED;
-      moveEnemy();
     }
 
   }, E1.MOVE_DELAY);
@@ -52,6 +59,10 @@ function handleEnemyMovement() {
 function clearEnemy() {
   const { left, top } = enemyPosition;
   ctx.clearRect(left - 2, top, E1.WIDTH + 4, E1.HEIGHT);
+}
+
+export function killEnemy() {
+  isEnemyAlive = false;
 }
 
 function moveEnemy() {
