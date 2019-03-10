@@ -1,5 +1,6 @@
 import { handleMovement, handleShooting } from './spacecraft.js';
-import { createEnemy } from './enemies.js';
+
+export var gameStared = false;
 
 export function handleStartGame() {
   $('#start-btn').click(() => {
@@ -7,12 +8,9 @@ export function handleStartGame() {
     handleShooting();
 
     $('#welcome-message').fadeOut('slow');
-    $('#start-btn').fadeOut('slow', handleWaves);
+    $('#start-btn').fadeOut('slow', function() {
+      gameStared = true;
+    });
   });
 }
 
-let wave = 0;
-
-function handleWaves() {
-  createEnemy();
-}

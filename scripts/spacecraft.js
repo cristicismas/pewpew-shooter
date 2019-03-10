@@ -115,7 +115,7 @@ function drawLaser(x, y) {
   
   let laserAlive = true;
 
-  setInterval(function() {
+  var drawInterval = setInterval(function() {
     const enemyHit = 
       topOffset >= enemyPosition.top &&
       topOffset <= enemyPosition.top + ENEMY.E1.HEIGHT &&
@@ -131,6 +131,7 @@ function drawLaser(x, y) {
       // Clear laser
       ctx.clearRect(leftOffset, topOffset + 10, 3, 20);
       laserAlive = false;
+      clearInterval(drawInterval);
     } else if (laserAlive) {
       ctx.beginPath();
     

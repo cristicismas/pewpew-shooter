@@ -1,5 +1,6 @@
-import { ENEMY, SHIP } from './constants.js';
+import { ENEMY, SHIP, FRONTS } from './constants.js';
 import { shipPosition } from './spacecraft.js';
+import { gameStared } from './game.js';
 
 const { E1, E2, E3 } = ENEMY;
 
@@ -7,7 +8,7 @@ var enemy;
 
 export const enemyPosition = {
   left: $(document).width() / 2 - E1.WIDTH / 2,
-  top: 50
+  top: -50
 };
 
 let isEnemyAlive = true;
@@ -24,16 +25,21 @@ export function createEnemy() {
     ctx.beginPath();
     ctx.drawImage(enemy, enemyPosition.left, enemyPosition.top, E1.WIDTH, E1.HEIGHT);
 
-    handleEnemyMovement();
+    var checkGameStart = setInterval(function() {
+      if (gameStared) {
+        handleEnemyMovement();
+        clearInterval(checkGameStart);
+      }
+    }, 10);
   };
 
   return { objectsLayer, ctx };
 }
 
 function handleEnemyMovement() {
-  setInterval(function() {
+  // Handle x movement
+  var moveInterval = setInterval(function() {
     if (isEnemyAlive) {
-      
       const enemyX = enemyPosition.left;
       const shipX = shipPosition.left;
 
@@ -51,9 +57,27 @@ function handleEnemyMovement() {
       }
     } else {
       clearEnemy();
+      clearInterval(moveInterval);
     }
-
   }, E1.MOVE_DELAY);
+
+  // Handle y movement
+  let currentFront = 0;
+
+  setInterval(function() {
+    if (currentFront < FRONTS.length) {
+      currentFront++;
+    }
+  }, 2500);
+
+  setInterval(function() {
+    if (isEnemyAlive && enemyPosition.top < FRONTS[currentFront]) {
+      clearEnemy();
+      enemyPosition.top += E1.SPEED;
+      moveEnemy();
+    }
+  }, E1.MOVE_DELAY);
+    
 }
 
 function clearEnemy() {

@@ -42,3 +42,5 @@ export const ENEMY = {
     SPEED: 3
   }
 }
+
+export const FRONTS = [50, 150, 350];
