@@ -43,4 +43,4 @@ export const ENEMY = {
   }
 }
 
-export const FRONTS = [50, 150, 350];
+export const FRONTS = [50, 200, 350];
