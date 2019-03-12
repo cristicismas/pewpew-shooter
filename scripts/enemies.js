@@ -6,7 +6,7 @@ const { E1, E2, E3 } = ENEMY;
 
 var enemy;
 
-export const enemyPosition = {
+export var enemyPosition = {
   left: $(document).width() / 2 - E1.WIDTH / 2,
   top: -50
 };
@@ -57,6 +57,13 @@ function handleEnemyMovement() {
       }
     } else {
       clearEnemy();
+
+      // reset enemy position
+      enemyPosition = {
+        left: $(document).width() / 2 - E1.WIDTH / 2,
+        top: -50
+      };
+
       clearInterval(moveInterval);
     }
   }, E1.MOVE_DELAY);
@@ -65,7 +72,7 @@ function handleEnemyMovement() {
   let currentFront = 0;
 
   setInterval(function() {
-    if (currentFront < FRONTS.length) {
+    if (isEnemyAlive && currentFront < FRONTS.length) {
       currentFront++;
     }
   }, 2500);
