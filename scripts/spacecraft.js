@@ -116,7 +116,7 @@ function drawLaser(x, y) {
   let laserAlive = true;
 
   var drawInterval = setInterval(function() {
-    const enemyHit = handleCollision(
+    const enemyHit = detectCollision(
       topOffset, leftOffset, 
       enemyPosition.top, enemyPosition.left, 
       ENEMY.E1.HEIGHT, ENEMY.E1.WIDTH
@@ -158,12 +158,11 @@ function drawLaser(x, y) {
   }, SHIP.LASER_DRAWING_DELAY);
 }
 
-function handleCollision(firstTop, firstLeft, secondTop, secondLeft, height, width) {
-  const enemyHit = 
+function detectCollision(firstTop, firstLeft, secondTop, secondLeft, height, width) {
+  return (
     firstTop >= secondTop &&
     firstTop <= secondTop + height &&
     firstLeft >= secondLeft && 
-    firstLeft <= secondLeft + width;
-  
-  return enemyHit;
+    firstLeft <= secondLeft + width
+  );
 }
