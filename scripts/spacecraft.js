@@ -116,11 +116,11 @@ function drawLaser(x, y) {
   let laserAlive = true;
 
   var drawInterval = setInterval(function() {
-    const enemyHit = 
-      topOffset >= enemyPosition.top &&
-      topOffset <= enemyPosition.top + ENEMY.E1.HEIGHT &&
-      leftOffset >= enemyPosition.left && 
-      leftOffset <= enemyPosition.left + ENEMY.E1.WIDTH;
+    const enemyHit = handleCollision(
+      topOffset, leftOffset, 
+      enemyPosition.top, enemyPosition.left, 
+      ENEMY.E1.HEIGHT, ENEMY.E1.WIDTH
+    );
 
     if (enemyHit) {
       ctx.beginPath();
@@ -156,4 +156,14 @@ function drawLaser(x, y) {
       topOffset -= 10;
     }
   }, SHIP.LASER_DRAWING_DELAY);
+}
+
+function handleCollision(firstTop, firstLeft, secondTop, secondLeft, height, width) {
+  const enemyHit = 
+    firstTop >= secondTop &&
+    firstTop <= secondTop + height &&
+    firstLeft >= secondLeft && 
+    firstLeft <= secondLeft + width;
+  
+  return enemyHit;
 }
