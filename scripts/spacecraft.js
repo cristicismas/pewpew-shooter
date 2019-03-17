@@ -6,7 +6,7 @@ import { detectCollision } from './collision.js'
 var keysPressed = {};
 var ship;
 
-export const shipPosition = {
+export var shipPosition = {
   left: $(document).width() / 2 - SHIP.WIDTH / 2,
   top: $(document).height() - 200
 };
@@ -19,12 +19,22 @@ $(document).keyup(function(e) {
   delete keysPressed[e.keyCode];
 });
 
-$(window).on('resize', () => {
-  objectsLayer.width = $(document).width();
+$(window).on('resize', e => {
+  // Using e.target works well for width but not for height.
+  objectsLayer.width = e.target.outerWidth;
   objectsLayer.height = $(document).height();
 
+  // Re-render ship using new document dimensions.
+  shipPosition = getNewInitialShipPoisition();
   moveShip(ctx);
 });
+
+function getNewInitialShipPoisition() {
+  return {
+    left: objectsLayer.width / 2 - SHIP.WIDTH / 2,
+    top: objectsLayer.height - 200
+  }
+}
 
 const { objectsLayer, ctx } = handleCanvas();
 
